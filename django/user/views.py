@@ -155,12 +155,18 @@ def ChangePassword(request):
 
 def ResetPasswordEmail(request):
     form = forms.EmailForm()
+    message = ""
 
     if request.method == "POST":
+        message = ""
         form = forms.EmailForm(request.POST)
         if form.is_valid():
             email = request.POST.get("email")
-            userprofile = get_object_or_404(models.UserProfile, email=email)
+            try:
+                userprofile = get_object_or_404(models.UserProfile, email=email)
+            except:
+                userprofile = None
+                message = "No account found with that email."
 
             if userprofile is not None:
                 token = secrets.token_urlsafe(64)
@@ -174,7 +180,7 @@ def ResetPasswordEmail(request):
                         [email,],
                         fail_silently=False,
                         )
-    message = "Check your inbox to confirm your email."
+                message = "Check your inbox to confirm your email."
     context = {
             "form": form,
             "message": message,
@@ -209,7 +215,6 @@ def ResetPassword(request, token):
 
             else:
                 message = "Passwords must match."
-
     context = {
             "form": form,
             "message": message,
