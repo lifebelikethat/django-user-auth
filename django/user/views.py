@@ -95,7 +95,7 @@ def ResendConfirmEmail(request):
             if userprofile is not None and userprofile.email_token != "":
                 send_mail(
                         "confirm email",
-                        f"http://127.0.0.1:8000/user/confirm/{userprofile.email_token}/",
+                        f"https://django-user-auth-dev-hkqg.4.us-1.fl0.io/user/confirm/{userprofile.email_token}/",
                         "settings.EMAIL_HOST_USER",
                         [email,],
                         fail_silently=False,
@@ -169,7 +169,7 @@ def ResetPasswordEmail(request):
 
                 send_mail(
                         "confirm email",
-                        f"http://127.0.0.1:8000/user/reset-password/{token}/",
+                        f"https://django-user-auth-dev-hkqg.4.us-1.fl0.io/user/reset-password/{token}/",
                         "settings.EMAIL_HOST_USER",
                         [email,],
                         fail_silently=False,
@@ -234,7 +234,7 @@ def ChangeEmail(request):
 
             send_mail(
                     "change email",
-                    f"http://127.0.0.1/user/change-email/{token}/",
+                    f"https://django-user-auth-dev-hkqg.4.us-1.fl0.io/user/change-email/{token}/",
                     "settings.EMAIL_HOST_USER",
                     [email,],
                     fail_silently=True,
