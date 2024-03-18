@@ -1,24 +1,24 @@
 {% extends 'user/base.html' %}
 {% block content %}
 {% load widget_tweaks %}
-<div
-        class="container position-absolute top-50 start-50 translate-middle"
-               style="padding:20px;
-                      background-color:lightgray;
-                      width:20%;
-                      ">
-    <form method="POST" class="">
-        {% csrf_token %}
-        <div class="form-group">
-        {% for field in form.visible_fields %}
-            <small>{{ field.label_tag }}</small>
-            {% render_field field class="form-control" %}
-        {% endfor %}
-        </div>
-        <p style="color:red;">
-        {{ message }}
-        </p>
-        <button class="btn btn-success" type="submit">Login</button>
-    </form>
+<div class="container position-absolute top-50 start-50 translate-middle box-container">
+  <form method="POST">
+    {% csrf_token %}
+    <div class="form-group">
+      {% for field in form.visible_fields %}
+      <small>{{ field.label_tag }}</small>
+      {% render_field field class="form-control" %}
+      {% endfor %}
+    </div>
+    <p style="color:red;">
+    {{ message }}
+    </p>
+    <div class="link-container">
+      <a href={% url 'reset-password-email' %}>Forgot Password?</a>
+      <a href={% url 'register' %}>Sign Up</a>
+    </div>
+    <br>
+    <button class="btn btn-success" type="submit">Login</button>
+  </form>
 </div>
 {% endblock %}

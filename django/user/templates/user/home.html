@@ -1,4 +1,11 @@
 {% extends 'user/base.html' %}
 {% block content %}
 <h3>Logged in as {{ user }}</h3>
+<a href={% url 'logout' %} style="text-decoration: none;">
+  <button class="btn btn-primary">Logout</button>
+</a>
+
+<a href={% url 'change-password' %} style="text-decoration: none;">
+  <button class="btn btn-secondary" href={% url 'change-password' %}>Change Password</button>
+</a>
 {% endblock %} 
