@@ -1,0 +1,10 @@
+.link-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.box-container {
+    padding: 20px;
+    background-color: lightgray;
+    width: 20%;
+}
