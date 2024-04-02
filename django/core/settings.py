@@ -40,7 +40,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 ALLOWED_HOSTS = ['*']
 
-CSRF_TRUSTED_ORIGINS = ['https://django-user-auth-dev-hkqg']
+CSRF_TRUSTED_ORIGINS = ['*']
 
 AUTH_USER_MODEL = 'auth.User'
 
